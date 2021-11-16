@@ -1,6 +1,9 @@
+import './App.scss';
+import './styles/global.scss';
+
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       Todo app
     </div>
   );
