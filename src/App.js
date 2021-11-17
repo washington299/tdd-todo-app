@@ -1,10 +1,11 @@
 import React from 'react';
 
-import './App.scss';
+import { Main } from 'components/Main';
+
 import './styles/global.scss';
 
 const App = () => {
-	return <div className="app">Todo app</div>;
+	return <Main />;
 };
 
 export default App;

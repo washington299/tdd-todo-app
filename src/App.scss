@@ -1,9 +1,0 @@
-@use './styles/variables/colors';
-@use './styles/variables/fonts';
-@use './styles/variables/size';
-
-.app {
-	color: colors.$bright-blue;
-	font-size: size.$size-large;
-	font-family: fonts.$font-family;
-}
