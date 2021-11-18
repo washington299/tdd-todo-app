@@ -1,14 +1,14 @@
 import React from 'react';
 
+import { Header } from 'components/Header';
+
 import 'components/Todo/styles.scss';
 
 export const Todo = () => {
 	return (
 		<main className="todo">
 			<div className="container">
-				<header className="todo__header">
-					<h1 className="todo__header-title">TODO</h1>
-				</header>
+				<Header />
 			</div>
 		</main>
 	);

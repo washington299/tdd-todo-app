@@ -1,18 +1,5 @@
-@use '../../styles/variables/size';
-@use '../../styles/variables/colors';
-
 .todo {
 	width: 100%;
 	position: absolute;
 	top: 10vh;
-}
-
-.todo__header-title {
-	color: colors.$very-light-gray;
-	font-size: size.$size-extra-large;
-	letter-spacing: size.$size-extra-small;
-
-	@media screen and (min-width: size.$small-device) {
-		font-size: size.$size-super-large;
-	}
 }
