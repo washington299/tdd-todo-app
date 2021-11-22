@@ -1,0 +1,22 @@
+@use '../../styles/variables/size';
+@use '../../styles/variables/colors';
+
+.form {
+	display: flex;
+	align-items: center;
+
+	margin-top: size.$size-large;
+	padding: 0 size.$size-extra-small;
+	border-radius: size.$size-extra-small / 2;
+	background-color: colors.$very-light-gray;
+}
+
+.form__input {
+	width: 100%;
+}
+
+.form__send-icon {
+	font-size: size.$size-medium;
+
+	cursor: pointer;
+}
