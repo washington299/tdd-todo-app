@@ -19,4 +19,20 @@ describe('<List />', () => {
 
 		expect(emptyMessage).toBeInTheDocument();
 	});
+
+	it('Should render list item if list is not empty', () => {
+		const mockListItem = [
+			{
+				id: 1,
+				name: 'Wash the dishes',
+				completed: false,
+			},
+		];
+
+		render(<List list={mockListItem} />);
+
+		const listItem = screen.getByText(/Wash the dishes/i);
+
+		expect(listItem).toBeInTheDocument();
+	});
 });
