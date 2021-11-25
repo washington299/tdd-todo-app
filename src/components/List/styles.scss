@@ -1,0 +1,17 @@
+@use '../../styles/variables/colors';
+@use '../../styles/variables/size';
+
+.list {
+	margin-top: size.$size-medium;
+	padding: size.$size-small;
+
+	background-color: colors.$very-light-gray;
+
+	border: none;
+	border-radius: size.$size-extra-small / 2;
+}
+
+.list__empty-message {
+	color: colors.$dark-grayish-blue;
+	text-align: center;
+}
