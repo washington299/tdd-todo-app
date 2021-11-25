@@ -9,6 +9,10 @@
 	font-family: fonts.$font-family;
 }
 
+body {
+	background-color: colors.$very-light-grayish-blue;
+}
+
 .container {
 	max-width: size.$large-device;
 	width: 100%;
