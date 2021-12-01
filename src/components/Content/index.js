@@ -1,8 +1,8 @@
 import React from 'react';
 
-import 'components/List/styles.scss';
+import 'components/Content/styles.scss';
 
-export const List = ({ list = [] }) => {
+export const Content = ({ list = [] }) => {
 	return (
 		<section className="list" data-testid="list">
 			{list.length > 0 ? (

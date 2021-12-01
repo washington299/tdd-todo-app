@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import { List } from '.';
+import { Content } from '.';
 
-describe('<List />', () => {
+describe('<Content />', () => {
 	it('Should render list', () => {
-		render(<List />);
+		render(<Content />);
 
 		const list = screen.getByTestId('list');
 
@@ -13,7 +13,7 @@ describe('<List />', () => {
 	});
 
 	it('Should show a message when list is empty', () => {
-		render(<List />);
+		render(<Content />);
 
 		const emptyMessage = screen.getByText(/List is empty/i);
 
@@ -29,7 +29,7 @@ describe('<List />', () => {
 			},
 		];
 
-		render(<List list={mockListItem} />);
+		render(<Content list={mockListItem} />);
 
 		const listItem = screen.getByText(/Wash the dishes/i);
 
