@@ -1,19 +1,11 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import { Content } from '.';
+import { List } from '.';
 
-describe('<Content />', () => {
-	it('Should render list', () => {
-		render(<Content />);
-
-		const list = screen.getByTestId('list');
-
-		expect(list).toBeInTheDocument();
-	});
-
+describe('<List />', () => {
 	it('Should show a message when list is empty', () => {
-		render(<Content />);
+		render(<List list={[]} />);
 
 		const emptyMessage = screen.getByText(/List is empty/i);
 
@@ -29,7 +21,7 @@ describe('<Content />', () => {
 			},
 		];
 
-		render(<Content list={mockListItem} />);
+		render(<List list={mockListItem} />);
 
 		const listItem = screen.getByText(/Wash the dishes/i);
 

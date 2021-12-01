@@ -1,0 +1,6 @@
+@use '../../styles/variables/colors';
+
+.list__empty-message {
+	color: colors.$dark-grayish-blue;
+	text-align: center;
+}

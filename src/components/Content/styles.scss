@@ -1,7 +1,7 @@
 @use '../../styles/variables/colors';
 @use '../../styles/variables/size';
 
-.list {
+.content {
 	margin-top: size.$size-medium;
 	padding: size.$size-small;
 
@@ -9,9 +9,4 @@
 
 	border: none;
 	border-radius: size.$size-extra-small / 2;
-}
-
-.list__empty-message {
-	color: colors.$dark-grayish-blue;
-	text-align: center;
 }
