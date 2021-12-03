@@ -5,7 +5,7 @@ import { Content } from '.';
 
 describe('<Content />', () => {
 	it('Should render content', () => {
-		render(<Content />);
+		render(<Content list={[]} />);
 
 		const content = screen.getByTestId('content');
 

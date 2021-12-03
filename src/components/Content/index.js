@@ -4,10 +4,10 @@ import { List } from 'components/List';
 
 import 'components/Content/styles.scss';
 
-export const Content = ({ list = [] }) => {
+export const Content = ({ list, setList }) => {
 	return (
 		<section className="content" data-testid="content">
-			<List list={list} />
+			<List list={list} setList={setList} />
 		</section>
 	);
 };

@@ -1,4 +1,44 @@
 @use '../../styles/variables/colors';
+@use '../../styles/variables/size';
+
+.list {
+	list-style: none;
+}
+
+.list__item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: size.$size-small;
+
+	border-bottom: 1px solid colors.$light-grayish-blue;
+}
+
+.list__left-content {
+	display: flex;
+	align-items: center;
+}
+
+.list__checked {
+	width: size.$size-medium;
+	height: size.$size-medium;
+
+	margin-right: size.$size-small;
+
+	border: 1px solid colors.$light-grayish-blue;
+	border-radius: 50%;
+
+	cursor: pointer;
+}
+
+.list__name {
+	flex: 1;
+}
+
+.list__close-icon {
+	cursor: pointer;
+}
 
 .list__empty-message {
 	color: colors.$dark-grayish-blue;
