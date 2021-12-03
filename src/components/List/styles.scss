@@ -20,7 +20,11 @@
 	align-items: center;
 }
 
-.list__checked {
+.list__checkbox {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
 	width: size.$size-medium;
 	height: size.$size-medium;
 
@@ -30,6 +34,19 @@
 	border-radius: 50%;
 
 	cursor: pointer;
+}
+
+.list__check-icon {
+	width: 12px;
+	height: 12px;
+}
+
+.checked {
+	background-image: colors.$check-background;
+}
+
+.name-checked {
+	color: colors.$light-grayish-blue;
 }
 
 .list__name {

@@ -20,18 +20,27 @@ export const List = ({ list, setList }) => {
 				<>
 					{list.map(({ id, name, completed }, index) => (
 						<li key={id} className="list__item">
-							<div className="list__left-content">
-								{completed ? (
-									<div data-testid="checked">checked</div>
-								) : (
+							{completed ? (
+								<div className="list__left-content">
+									<div className="list__checkbox checked" data-testid="checked">
+										<img
+											src="/images/icon-check.svg"
+											alt="chekced icon"
+											className="list__check-icon"
+										/>
+									</div>
+									<del className="list__name name-checked">{name}</del>
+								</div>
+							) : (
+								<div className="list__left-content">
 									<div
-										className="list__checked"
+										className="list__checkbox"
 										data-testid="unchecked"
 										onClick={() => checkItem(index)}
 									/>
-								)}
-								<span className="list__name">{name}</span>
-							</div>
+									<span className="list__name">{name}</span>
+								</div>
+							)}
 							<img src="/images/icon-cross.svg" alt="Close icon" className="list__close-icon" />
 						</li>
 					))}
