@@ -10,7 +10,7 @@ export const Content = ({ list, setList }) => {
 		<section className="content" data-testid="content">
 			<List list={list} setList={setList} />
 
-			<Footer />
+			<Footer listQuantity={list.length} />
 		</section>
 	);
 };
