@@ -3,45 +3,35 @@ import { render, screen, fireEvent } from '@testing-library/react';
 
 import { List } from '.';
 
-const MockComponent = () => {
-	const [list, setList] = useState([
-		{
-			id: 1,
-			name: 'Wash the dishes',
-			completed: false,
-		},
-	]);
+const MockComponent = ({ listItems = [] }) => {
+	const [list, setList] = useState(listItems);
 
 	return <List list={list} setList={setList} />;
 };
 
 describe('<List />', () => {
+	const mockListItem = [
+		{
+			id: 1,
+			name: 'Wash the dishes',
+			completed: false,
+		},
+	];
+
 	it('Should show a message when list is empty', () => {
-		render(<List list={[]} />);
+		render(<MockComponent />);
 
-		const emptyMessage = screen.getByText(/List is empty/i);
-
-		expect(emptyMessage).toBeInTheDocument();
+		expect(screen.getByText(/List is empty/i)).toBeInTheDocument();
 	});
 
 	it('Should render list item if list is not empty', () => {
-		const mockListItem = [
-			{
-				id: 1,
-				name: 'Wash the dishes',
-				completed: false,
-			},
-		];
+		render(<MockComponent listItems={mockListItem} />);
 
-		render(<List list={mockListItem} />);
-
-		const listItem = screen.getByText(/Wash the dishes/i);
-
-		expect(listItem).toBeInTheDocument();
+		expect(screen.getByText(/Wash the dishes/i)).toBeInTheDocument();
 	});
 
 	it('Should toggle checkbox when clicked', () => {
-		render(<MockComponent />);
+		render(<MockComponent listItems={mockListItem} />);
 
 		fireEvent.click(screen.getByTestId('unchecked', { exact: true }));
 
