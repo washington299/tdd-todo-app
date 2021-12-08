@@ -58,6 +58,8 @@
 }
 
 .list__empty-message {
+	padding: size.$size-small 0;
+
 	color: colors.$dark-grayish-blue;
 	text-align: center;
 }
