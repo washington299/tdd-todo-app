@@ -7,8 +7,6 @@ describe('<Content />', () => {
 	it('Should render content', () => {
 		render(<Content list={[]} />);
 
-		const content = screen.getByTestId('content');
-
-		expect(content).toBeInTheDocument();
+		expect(screen.getByTestId('content')).toBeInTheDocument();
 	});
 });

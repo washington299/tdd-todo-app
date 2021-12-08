@@ -7,8 +7,6 @@ describe('<Todo />', () => {
 	it('render Todo header title', () => {
 		render(<Header />);
 
-		const headerTitle = screen.getByRole('heading', { name: /Todo/i });
-
-		expect(headerTitle).toBeInTheDocument();
+		expect(screen.getByRole('heading', { name: /Todo/i })).toBeInTheDocument();
 	});
 });

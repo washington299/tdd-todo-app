@@ -7,11 +7,8 @@ describe('<Input />', () => {
 	it('render form input', () => {
 		render(<Input />);
 
-		const input = screen.getByPlaceholderText(/Create a new todo/i);
-		const formIcon = screen.getByTitle(/Form send icon/i);
-
-		expect(input).toBeInTheDocument();
-		expect(formIcon).toBeInTheDocument();
+		expect(screen.getByPlaceholderText(/Create a new todo/i)).toBeInTheDocument();
+		expect(screen.getByTitle(/Form send icon/i)).toBeInTheDocument();
 	});
 
 	it('ensure input has correct value', () => {
