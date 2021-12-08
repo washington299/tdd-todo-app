@@ -41,4 +41,14 @@ describe('<List />', () => {
 
 		expect(screen.getByTestId('unchecked', { exact: true })).toBeInTheDocument();
 	});
+
+	it('Should delete list item when close icon is clicked', () => {
+		render(<MockComponent listItems={mockListItem} />);
+
+		const listItem = screen.getByText(/Wash the dishes/i);
+
+		fireEvent.click(screen.getByAltText(/Close icon/i));
+
+		expect(listItem).not.toBeInTheDocument();
+	});
 });

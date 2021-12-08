@@ -25,6 +25,12 @@ export const List = ({ list, setList }) => {
 		setList(newList);
 	};
 
+	const deleteItem = id => {
+		const listWithDeletedItem = list.filter(item => item.id !== id);
+
+		setList(listWithDeletedItem);
+	};
+
 	return (
 		<ul className="list">
 			{list.length > 0 ? (
@@ -56,7 +62,12 @@ export const List = ({ list, setList }) => {
 									<span className="list__name">{name}</span>
 								</div>
 							)}
-							<img src="/images/icon-cross.svg" alt="Close icon" className="list__close-icon" />
+							<img
+								src="/images/icon-cross.svg"
+								alt="Close icon"
+								className="list__close-icon"
+								onClick={() => deleteItem(id)}
+							/>
 						</li>
 					))}
 				</>
