@@ -14,6 +14,17 @@ export const List = ({ list, setList }) => {
 		setList(newList);
 	};
 
+	const uncheckItem = index => {
+		const newList = [...list];
+
+		newList[index] = {
+			...newList[index],
+			completed: false,
+		};
+
+		setList(newList);
+	};
+
 	return (
 		<ul className="list">
 			{list.length > 0 ? (
@@ -22,10 +33,14 @@ export const List = ({ list, setList }) => {
 						<li key={id} className="list__item">
 							{completed ? (
 								<div className="list__left-content">
-									<div className="list__checkbox checked" data-testid="checked">
+									<div
+										className="list__checkbox checked"
+										data-testid="checked"
+										onClick={() => uncheckItem(index)}
+									>
 										<img
 											src="/images/icon-check.svg"
-											alt="chekced icon"
+											alt="checked icon"
 											className="list__check-icon"
 										/>
 									</div>

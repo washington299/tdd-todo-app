@@ -40,15 +40,15 @@ describe('<List />', () => {
 		expect(listItem).toBeInTheDocument();
 	});
 
-	it('Shoudld toggle checkbox when clicked', async () => {
+	it('Should toggle checkbox when clicked', () => {
 		render(<MockComponent />);
 
-		const uncheckedElement = screen.getByTestId('unchecked');
+		fireEvent.click(screen.getByTestId('unchecked', { exact: true }));
 
-		fireEvent.click(uncheckedElement);
+		expect(screen.getByTestId('checked', { exact: true })).toBeInTheDocument();
 
-		const checkedElement = await screen.findByTestId('checked');
+		fireEvent.click(screen.getByTestId('checked', { exact: true }));
 
-		expect(checkedElement).toBeInTheDocument();
+		expect(screen.getByTestId('unchecked', { exact: true })).toBeInTheDocument();
 	});
 });
