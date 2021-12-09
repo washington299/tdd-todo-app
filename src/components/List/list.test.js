@@ -18,6 +18,19 @@ describe('<List />', () => {
 		},
 	];
 
+	const mockListItems = [
+		{
+			id: 1,
+			name: 'Wash the dishes',
+			completed: false,
+		},
+		{
+			id: 2,
+			name: 'Finish homework',
+			completed: false,
+		},
+	];
+
 	it('Should show a message when list is empty', () => {
 		render(<MockComponent />);
 
@@ -28,6 +41,14 @@ describe('<List />', () => {
 		render(<MockComponent listItems={mockListItem} />);
 
 		expect(screen.getByText(/Wash the dishes/i)).toBeInTheDocument();
+	});
+
+	it('Should render sort list items', () => {
+		render(<MockComponent listItems={mockListItems} />);
+
+		const listItems = screen.getAllByTestId(/List item name/i);
+
+		expect(listItems.map(item => item.textContent)).toEqual(['Finish homework', 'Wash the dishes']);
 	});
 
 	it('Should toggle checkbox when clicked', () => {

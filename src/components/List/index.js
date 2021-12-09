@@ -31,11 +31,13 @@ export const List = ({ list, setList }) => {
 		setList(listWithDeletedItem);
 	};
 
+	const sortByHighId = (a, b) => b.id - a.id;
+
 	return (
 		<ul className="list">
 			{list.length > 0 ? (
 				<>
-					{list.map(({ id, name, completed }, index) => (
+					{list.sort(sortByHighId).map(({ id, name, completed }, index) => (
 						<li key={id} className="list__item">
 							{completed ? (
 								<div className="list__left-content">
@@ -59,7 +61,9 @@ export const List = ({ list, setList }) => {
 										data-testid="unchecked"
 										onClick={() => checkItem(index)}
 									/>
-									<span className="list__name">{name}</span>
+									<span className="list__name" data-testid="list item name">
+										{name}
+									</span>
 								</div>
 							)}
 							<img
