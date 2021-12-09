@@ -17,4 +17,17 @@ describe('<Todo />', () => {
 		expect(listEmptyMessage).not.toBeInTheDocument();
 		expect(screen.getByText(/Wash the dishes/i)).toBeInTheDocument();
 	});
+
+	it('Should clear completed items from the list', () => {
+		render(<Todo />);
+
+		fireEvent.change(screen.getByPlaceholderText(/Create a new todo/i), {
+			target: { value: 'Wash the dishes' },
+		});
+		fireEvent.click(screen.getByTitle(/Form send icon/i));
+		fireEvent.click(screen.getByTestId('unchecked', { exact: true }));
+		fireEvent.click(screen.getByRole('button', { name: /Clear completed/i }));
+
+		expect(screen.getByText(/List is empty/i)).toBeInTheDocument();
+	});
 });
