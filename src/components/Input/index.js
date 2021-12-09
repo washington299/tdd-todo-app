@@ -3,12 +3,15 @@ import { MdSend } from 'react-icons/md';
 
 import 'components/Input/styles.scss';
 
-export const Input = () => {
+export const Input = ({ list, setList }) => {
 	const [inputValue, setInputValue] = useState('');
 
 	const handleSubmit = () => {
 		if (!inputValue) return;
 
+		const newListItem = { id: list.length, name: inputValue, completed: false };
+
+		setList([...list, newListItem]);
 		setInputValue('');
 	};
 
