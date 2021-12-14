@@ -1,11 +1,21 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 
+import { ListContextProvider } from 'contexts/list/context';
+
 import { Todo } from '.';
+
+const MockTodoComponent = () => {
+	return (
+		<ListContextProvider>
+			<Todo />
+		</ListContextProvider>
+	);
+};
 
 describe('<Todo />', () => {
 	it('Should add a list item to the list when clicked in the input icon', () => {
-		render(<Todo />);
+		render(<MockTodoComponent />);
 
 		const listEmptyMessage = screen.getByText(/List is empty/i);
 
@@ -19,7 +29,7 @@ describe('<Todo />', () => {
 	});
 
 	it('Should clear completed items from the list', () => {
-		render(<Todo />);
+		render(<MockTodoComponent />);
 
 		fireEvent.change(screen.getByPlaceholderText(/Create a new todo/i), {
 			target: { value: 'Wash the dishes' },

@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { MdSend } from 'react-icons/md';
+
+import { ListContext } from 'contexts/list/context';
 
 import 'components/Input/styles.scss';
 
-export const Input = ({ list, setList }) => {
+export const Input = () => {
 	const [inputValue, setInputValue] = useState('');
+
+	const { state, dispatch } = useContext(ListContext);
 
 	const handleSubmit = () => {
 		if (!inputValue) return;
 
-		const newListItem = { id: list.length, name: inputValue, completed: false };
+		const newListItem = { id: state.length, name: inputValue, completed: false };
 
-		setList([...list, newListItem]);
+		dispatch({ payload: { name: 'ADD_ITEM', data: newListItem } });
 		setInputValue('');
 	};
 

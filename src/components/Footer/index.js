@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { ListContext } from 'contexts/list/context';
 
 import 'components/Footer/styles.scss';
 
-export const Footer = ({ listQuantity = 0, list, setList }) => {
+export const Footer = () => {
+	const { state, dispatch } = useContext(ListContext);
+
+	const listQuantity = state?.length;
 	const itemWord = listQuantity > 1 ? 'items' : 'item';
 
 	const clearCompletedItems = () => {
-		const clearCompletedList = list.filter(item => item.completed === false);
+		const completedItemExist = state.filter(item => item.completed === true);
 
-		setList(clearCompletedList);
+		if (completedItemExist.length === 0) return;
+
+		dispatch({ payload: { name: 'CLEAR_COMPLETED_ITEMS' } });
 	};
 
 	return (

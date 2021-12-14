@@ -1,43 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { ListContext } from 'contexts/list/context';
 
 import 'components/List/styles.scss';
 
-export const List = ({ list, setList }) => {
+export const List = () => {
+	const { state, dispatch } = useContext(ListContext);
+
 	const checkItem = index => {
-		const newList = [...list];
-
-		newList[index] = {
-			...newList[index],
-			completed: true,
-		};
-
-		setList(newList);
+		dispatch({ payload: { name: 'CHECK_ITEM', data: { index } } });
 	};
 
 	const uncheckItem = index => {
-		const newList = [...list];
-
-		newList[index] = {
-			...newList[index],
-			completed: false,
-		};
-
-		setList(newList);
+		dispatch({ payload: { name: 'UNCHECK_ITEM', data: { index } } });
 	};
 
 	const deleteItem = id => {
-		const listWithDeletedItem = list.filter(item => item.id !== id);
-
-		setList(listWithDeletedItem);
+		dispatch({ payload: { name: 'DELETE_ITEM', data: { id } } });
 	};
 
 	const sortByHighId = (a, b) => b.id - a.id;
 
 	return (
 		<ul className="list">
-			{list.length > 0 ? (
+			{state?.length > 0 ? (
 				<>
-					{list.sort(sortByHighId).map(({ id, name, completed }, index) => (
+					{state.sort(sortByHighId).map(({ id, name, completed }, index) => (
 						<li key={id} className="list__item">
 							{completed ? (
 								<div className="list__left-content">

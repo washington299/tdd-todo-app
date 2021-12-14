@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+
+import { ListContext } from 'contexts/list/context';
+import { reducer } from 'contexts/list/reducer';
 
 import { List } from '.';
 
 const MockComponent = ({ listItems = [] }) => {
-	const [list, setList] = useState(listItems);
+	const [state, dispatch] = useReducer(reducer, listItems);
 
-	return <List list={list} setList={setList} />;
+	return (
+		<ListContext.Provider value={{ state, dispatch }}>
+			<List />
+		</ListContext.Provider>
+	);
 };
 
 describe('<List />', () => {

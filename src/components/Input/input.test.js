@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+
+import { ListContextProvider } from 'contexts/list/context';
 
 import { Input } from '.';
 
 const MockInputComponent = () => {
-	const [list, setList] = useState([]);
-
-	return <Input list={list} setList={setList} />;
+	return (
+		<ListContextProvider>
+			<Input />
+		</ListContextProvider>
+	);
 };
 
 describe('<Input />', () => {

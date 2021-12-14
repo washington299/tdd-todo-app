@@ -5,12 +5,11 @@ import { Footer } from 'components/Footer';
 
 import 'components/Content/styles.scss';
 
-export const Content = ({ list, setList }) => {
+export const Content = () => {
 	return (
 		<section className="content" data-testid="content">
-			<List list={list} setList={setList} />
-
-			<Footer listQuantity={list.length} list={list} setList={setList} />
+			<List />
+			<Footer />
 		</section>
 	);
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Header } from 'components/Header';
 import { Input } from 'components/Input';
@@ -8,14 +8,12 @@ import { Filters } from 'components/Filters';
 import 'components/Todo/styles.scss';
 
 export const Todo = () => {
-	const [list, setList] = useState([]);
-
 	return (
 		<main className="todo">
 			<div className="container">
 				<Header />
-				<Input list={list} setList={setList} />
-				<Content list={list} setList={setList} />
+				<Input />
+				<Content />
 				<Filters />
 			</div>
 		</main>
