@@ -2,8 +2,16 @@ export const initialState = [];
 
 export const reducer = (state = initialState, action) => {
 	switch (action.payload.name) {
-		case 'ADD_ITEM':
-			return [...state, action.payload.data];
+		case 'ADD_ITEM': {
+			const itemCreationDate = Date.now(new Date());
+			const newListItem = {
+				id: itemCreationDate,
+				name: action.payload.data.item,
+				completed: false,
+			};
+
+			return [...state, newListItem];
+		}
 		case 'TOGGLE_ITEM': {
 			const { index } = action.payload.data;
 			const newList = [...state];

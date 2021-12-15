@@ -8,14 +8,12 @@ import 'components/Input/styles.scss';
 export const Input = () => {
 	const [inputValue, setInputValue] = useState('');
 
-	const { state, dispatch } = useContext(ListContext);
+	const { dispatch } = useContext(ListContext);
 
 	const handleSubmit = () => {
 		if (!inputValue) return;
 
-		const newListItem = { id: state.length, name: inputValue, completed: false };
-
-		dispatch({ payload: { name: 'ADD_ITEM', data: newListItem } });
+		dispatch({ payload: { name: 'ADD_ITEM', data: { item: inputValue } } });
 		setInputValue('');
 	};
 
