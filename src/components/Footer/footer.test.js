@@ -2,11 +2,11 @@ import React, { useReducer } from 'react';
 import { render, screen } from '@testing-library/react';
 
 import { ListContext } from 'contexts/list/context';
-import { reducer } from 'contexts/list/reducer';
+import { initialState, reducer } from 'contexts/list/reducer';
 
 import { Footer } from '.';
 
-const MockFooterComponent = ({ listItems = [] }) => {
+const MockFooterComponent = ({ listItems = initialState }) => {
 	const [state, dispatch] = useReducer(reducer, listItems);
 
 	return (
@@ -37,7 +37,7 @@ describe('<Footer />', () => {
 	});
 
 	it('Should render plural message when more than 2 item is on the list', () => {
-		render(<MockFooterComponent listItems={mockListItems} />);
+		render(<MockFooterComponent listItems={{ ...initialState, list: mockListItems }} />);
 
 		expect(screen.getByText(/2 items left/i)).toBeInTheDocument();
 	});

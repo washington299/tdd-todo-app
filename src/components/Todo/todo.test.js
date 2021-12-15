@@ -40,4 +40,9 @@ describe('<Todo />', () => {
 
 		expect(screen.getByText(/List is empty/i)).toBeInTheDocument();
 	});
+
+	// it('Should remove Input and Clear completed button from screen when active/completed filter is selected', () => {
+	// 	render(<MockTodoComponent />);
+
+	// });
 });

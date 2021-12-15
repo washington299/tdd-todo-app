@@ -5,7 +5,10 @@ import { ListContext } from 'contexts/list/context';
 import 'components/List/styles.scss';
 
 export const List = () => {
-	const { state, dispatch } = useContext(ListContext);
+	const {
+		state: { list },
+		dispatch,
+	} = useContext(ListContext);
 
 	const toggleItem = index => {
 		dispatch({ payload: { name: 'TOGGLE_ITEM', data: { index } } });
@@ -19,9 +22,9 @@ export const List = () => {
 
 	return (
 		<ul className="list">
-			{state?.length > 0 ? (
+			{list?.length > 0 ? (
 				<>
-					{state.sort(sortByHighId).map(({ id, name, completed }, index) => (
+					{list.sort(sortByHighId).map(({ id, name, completed }, index) => (
 						<li key={id} className="list__item">
 							{completed ? (
 								<div className="list__left-content">

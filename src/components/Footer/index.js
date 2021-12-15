@@ -5,13 +5,16 @@ import { ListContext } from 'contexts/list/context';
 import 'components/Footer/styles.scss';
 
 export const Footer = () => {
-	const { state, dispatch } = useContext(ListContext);
+	const {
+		state: { list },
+		dispatch,
+	} = useContext(ListContext);
 
-	const listQuantity = state?.length;
+	const listQuantity = list?.length;
 	const itemWord = listQuantity > 1 ? 'items' : 'item';
 
 	const clearCompletedItems = () => {
-		const completedItemExist = state.filter(item => item.completed === true);
+		const completedItemExist = list.filter(item => item.completed === true);
 
 		if (completedItemExist.length === 0) return;
 
