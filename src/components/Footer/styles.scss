@@ -1,0 +1,23 @@
+@use '../../styles/variables/size';
+@use '../../styles/variables/colors';
+
+.footer {
+	display: flex;
+	justify-content: space-between;
+
+	padding: size.$size-small;
+
+	color: colors.$dark-grayish-blue;
+
+	border-top: 1px solid colors.$light-grayish-blue;
+}
+
+.footer__clear-button {
+	background-color: transparent;
+	border: none;
+
+	font-size: size.$size-small;
+	color: colors.$dark-grayish-blue;
+
+	cursor: pointer;
+}
