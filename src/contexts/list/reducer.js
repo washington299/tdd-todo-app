@@ -4,26 +4,13 @@ export const reducer = (state = initialState, action) => {
 	switch (action.payload.name) {
 		case 'ADD_ITEM':
 			return [...state, action.payload.data];
-		case 'CHECK_ITEM': {
+		case 'TOGGLE_ITEM': {
 			const { index } = action.payload.data;
 			const newList = [...state];
 
 			newList[index] = {
 				...newList[index],
-				completed: true,
-			};
-
-			state = newList;
-
-			return state;
-		}
-		case 'UNCHECK_ITEM': {
-			const { index } = action.payload.data;
-			const newList = [...state];
-
-			newList[index] = {
-				...newList[index],
-				completed: false,
+				completed: !newList[index].completed,
 			};
 
 			state = newList;

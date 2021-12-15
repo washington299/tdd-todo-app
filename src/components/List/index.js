@@ -7,12 +7,8 @@ import 'components/List/styles.scss';
 export const List = () => {
 	const { state, dispatch } = useContext(ListContext);
 
-	const checkItem = index => {
-		dispatch({ payload: { name: 'CHECK_ITEM', data: { index } } });
-	};
-
-	const uncheckItem = index => {
-		dispatch({ payload: { name: 'UNCHECK_ITEM', data: { index } } });
+	const toggleItem = index => {
+		dispatch({ payload: { name: 'TOGGLE_ITEM', data: { index } } });
 	};
 
 	const deleteItem = id => {
@@ -32,7 +28,7 @@ export const List = () => {
 									<div
 										className="list__checkbox checked"
 										data-testid="checked"
-										onClick={() => uncheckItem(index)}
+										onClick={() => toggleItem(index)}
 									>
 										<img
 											src="/images/icon-check.svg"
@@ -47,7 +43,7 @@ export const List = () => {
 									<div
 										className="list__checkbox"
 										data-testid="unchecked"
-										onClick={() => checkItem(index)}
+										onClick={() => toggleItem(index)}
 									/>
 									<span className="list__name" data-testid="list item name">
 										{name}
