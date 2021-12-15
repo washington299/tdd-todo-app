@@ -1,0 +1,11 @@
+@use '../../styles/variables/colors';
+@use '../../styles/variables/size';
+
+.content {
+	margin-top: size.$size-medium;
+
+	background-color: colors.$very-light-gray;
+
+	border: none;
+	border-radius: size.$size-extra-small / 2;
+}
