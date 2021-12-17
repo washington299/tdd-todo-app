@@ -1,30 +1,35 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+
+import { ListContext } from 'contexts/list/context';
 
 import 'components/Filters/styles.scss';
 
 export const Filters = () => {
-	const [activeButton, setActiveButton] = useState('all');
+	const {
+		state: { filter },
+		dispatch,
+	} = useContext(ListContext);
 
 	const markActiveButton = name => {
-		setActiveButton(name);
+		dispatch({ payload: { name: 'SET_FILTER', data: { filter: name } } });
 	};
 
 	return (
 		<section className="filters">
 			<button
-				className={`filters__button ${activeButton === 'all' && 'active'}`}
+				className={`filters__button ${filter === 'all' && 'active'}`}
 				onClick={() => markActiveButton('all')}
 			>
 				All
 			</button>
 			<button
-				className={`filters__button ${activeButton === 'active' && 'active'}`}
+				className={`filters__button ${filter === 'active' && 'active'}`}
 				onClick={() => markActiveButton('active')}
 			>
 				Active
 			</button>
 			<button
-				className={`filters__button ${activeButton === 'completed' && 'active'}`}
+				className={`filters__button ${filter === 'completed' && 'active'}`}
 				onClick={() => markActiveButton('completed')}
 			>
 				Completed

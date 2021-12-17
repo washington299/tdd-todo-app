@@ -6,7 +6,7 @@ import 'components/Footer/styles.scss';
 
 export const Footer = () => {
 	const {
-		state: { list },
+		state: { list, filter },
 		dispatch,
 	} = useContext(ListContext);
 
@@ -24,9 +24,11 @@ export const Footer = () => {
 	return (
 		<footer className="footer">
 			<div className="footer__list-quantity">{`${listQuantity} ${itemWord} left`}</div>
-			<button className="footer__clear-button" onClick={clearCompletedItems}>
-				Clear completed
-			</button>
+			{filter === 'all' && (
+				<button className="footer__clear-button" onClick={clearCompletedItems}>
+					Clear completed
+				</button>
+			)}
 		</footer>
 	);
 };

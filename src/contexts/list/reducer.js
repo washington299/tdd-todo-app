@@ -36,5 +36,7 @@ export const reducer = (state = initialState, action) => {
 
 			return { ...state, list: clearCompletedList };
 		}
+		case 'SET_FILTER':
+			return { ...state, filter: action.payload.data.filter };
 	}
 };

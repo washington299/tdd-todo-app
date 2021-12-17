@@ -41,8 +41,15 @@ describe('<Todo />', () => {
 		expect(screen.getByText(/List is empty/i)).toBeInTheDocument();
 	});
 
-	// it('Should remove Input and Clear completed button from screen when active/completed filter is selected', () => {
-	// 	render(<MockTodoComponent />);
+	it('Should remove Input and Clear completed button from screen when active/completed filter is selected', () => {
+		render(<MockTodoComponent />);
 
-	// });
+		const todoInput = screen.getByPlaceholderText(/Create a new todo/i);
+		const clearCompletedButton = screen.getByRole('button', { name: /Clear completed/i });
+
+		fireEvent.click(screen.getByRole('button', { name: /Active/i }));
+
+		expect(todoInput).not.toBeInTheDocument();
+		expect(clearCompletedButton).not.toBeInTheDocument();
+	});
 });
