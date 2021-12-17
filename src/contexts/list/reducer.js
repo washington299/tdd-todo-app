@@ -17,7 +17,7 @@ export const reducer = (state = initialState, action) => {
 		}
 		case 'TOGGLE_ITEM': {
 			const { index } = action.payload.data;
-			const newList = [...state.list];
+			const newList = [...state.list.sort((a, b) => b.id - a.id)];
 
 			newList[index] = {
 				...newList[index],

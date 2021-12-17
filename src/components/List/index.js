@@ -6,9 +6,18 @@ import 'components/List/styles.scss';
 
 export const List = () => {
 	const {
-		state: { list },
+		state: { list, filter },
 		dispatch,
 	} = useContext(ListContext);
+
+	const listAllItems = list.filter(item => item);
+	const listActiveItems = list.filter(item => item.completed === false);
+	const listCompletedItems = list.filter(item => item.completed === true);
+
+	const currentList =
+		(filter === 'all' && listAllItems) ||
+		(filter === 'active' && listActiveItems) ||
+		(filter === 'completed' && listCompletedItems);
 
 	const toggleItem = index => {
 		dispatch({ payload: { name: 'TOGGLE_ITEM', data: { index } } });
@@ -22,9 +31,9 @@ export const List = () => {
 
 	return (
 		<ul className="list">
-			{list?.length > 0 ? (
+			{currentList?.length > 0 ? (
 				<>
-					{list.sort(sortByHighId).map(({ id, name, completed }, index) => (
+					{currentList.sort(sortByHighId).map(({ id, name, completed }, index) => (
 						<li key={id} className="list__item">
 							{completed ? (
 								<div className="list__left-content">

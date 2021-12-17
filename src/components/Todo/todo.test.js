@@ -52,4 +52,27 @@ describe('<Todo />', () => {
 		expect(todoInput).not.toBeInTheDocument();
 		expect(clearCompletedButton).not.toBeInTheDocument();
 	});
+
+	it('Should render correct completed list items filter', () => {
+		render(<MockTodoComponent />);
+
+		fireEvent.change(screen.getByPlaceholderText(/Create a new todo/i), {
+			target: { value: 'Wash the dishes' },
+		});
+		fireEvent.click(screen.getByTitle(/Form send icon/i));
+		fireEvent.change(screen.getByPlaceholderText(/Create a new todo/i), {
+			target: { value: 'Finish homework' },
+		});
+		fireEvent.click(screen.getByTitle(/Form send icon/i));
+
+		const filterCompletedButton = screen.getAllByRole('button', { name: /Completed/i });
+
+		fireEvent.click(filterCompletedButton[1]);
+
+		const emptyMessage = screen.getByText(/List is empty/i);
+		const itemsLeft = screen.getByText(/0 item left/i);
+
+		expect(emptyMessage).toBeInTheDocument();
+		expect(itemsLeft).toBeInTheDocument();
+	});
 });
