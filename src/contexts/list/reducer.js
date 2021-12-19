@@ -1,4 +1,7 @@
-export const initialState = [];
+export const initialState = {
+	list: [],
+	filter: 'all',
+};
 
 export const reducer = (state = initialState, action) => {
 	switch (action.payload.name) {
@@ -10,34 +13,30 @@ export const reducer = (state = initialState, action) => {
 				completed: false,
 			};
 
-			return [...state, newListItem];
+			return { ...state, list: [...state.list, newListItem] };
 		}
 		case 'TOGGLE_ITEM': {
 			const { index } = action.payload.data;
-			const newList = [...state];
+			const newList = [...state.list.sort((a, b) => b.id - a.id)];
 
 			newList[index] = {
 				...newList[index],
 				completed: !newList[index].completed,
 			};
 
-			state = newList;
-
-			return state;
+			return { ...state, list: newList };
 		}
 		case 'DELETE_ITEM': {
-			const listWithDeletedItem = state.filter(item => item.id !== action.payload.data.id);
+			const listWithDeletedItem = state.list.filter(item => item.id !== action.payload.data.id);
 
-			state = listWithDeletedItem;
-
-			return state;
+			return { ...state, list: listWithDeletedItem };
 		}
 		case 'CLEAR_COMPLETED_ITEMS': {
-			const clearCompletedList = state.filter(item => item.completed === false);
+			const clearCompletedList = state.list.filter(item => item.completed === false);
 
-			state = clearCompletedList;
-
-			return state;
+			return { ...state, list: clearCompletedList };
 		}
+		case 'SET_FILTER':
+			return { ...state, filter: action.payload.data.filter };
 	}
 };

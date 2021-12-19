@@ -2,11 +2,11 @@ import React, { useReducer } from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 
 import { ListContext } from 'contexts/list/context';
-import { reducer } from 'contexts/list/reducer';
+import { initialState, reducer } from 'contexts/list/reducer';
 
 import { List } from '.';
 
-const MockComponent = ({ listItems = [] }) => {
+const MockComponent = ({ listItems = initialState }) => {
 	const [state, dispatch] = useReducer(reducer, listItems);
 
 	return (
@@ -45,13 +45,13 @@ describe('<List />', () => {
 	});
 
 	it('Should render list item if list is not empty', () => {
-		render(<MockComponent listItems={mockListItem} />);
+		render(<MockComponent listItems={{ ...initialState, list: mockListItem }} />);
 
 		expect(screen.getByText(/Wash the dishes/i)).toBeInTheDocument();
 	});
 
 	it('Should render sort list items', () => {
-		render(<MockComponent listItems={mockListItems} />);
+		render(<MockComponent listItems={{ ...initialState, list: mockListItems }} />);
 
 		const listItems = screen.getAllByTestId(/List item name/i);
 
@@ -59,7 +59,7 @@ describe('<List />', () => {
 	});
 
 	it('Should toggle checkbox when clicked', () => {
-		render(<MockComponent listItems={mockListItem} />);
+		render(<MockComponent listItems={{ ...initialState, list: mockListItem }} />);
 
 		fireEvent.click(screen.getByTestId('unchecked', { exact: true }));
 
@@ -71,7 +71,7 @@ describe('<List />', () => {
 	});
 
 	it('Should delete list item when close icon is clicked', () => {
-		render(<MockComponent listItems={mockListItem} />);
+		render(<MockComponent listItems={{ ...initialState, list: mockListItem }} />);
 
 		const listItem = screen.getByText(/Wash the dishes/i);
 

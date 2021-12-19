@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { List } from 'components/List';
-import { Footer } from 'components/Footer';
+import { List, Footer } from 'components';
 
 import 'components/Content/styles.scss';
 

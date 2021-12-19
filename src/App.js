@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ListContextProvider } from 'contexts/list/context';
 
-import { Main } from 'components/Main';
+import { Main } from 'components';
 
 import './styles/global.scss';
 
