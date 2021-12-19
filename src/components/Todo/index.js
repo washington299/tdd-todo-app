@@ -1,9 +1,6 @@
 import React from 'react';
 
-import { Header } from 'components/Header';
-import { Input } from 'components/Input';
-import { Content } from 'components/Content';
-import { Filters } from 'components/Filters';
+import { Header, Input, Content, Filters } from 'components';
 
 import 'components/Todo/styles.scss';
 

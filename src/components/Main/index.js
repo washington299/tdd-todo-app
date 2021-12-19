@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useWindowSize } from 'hooks/useWindowSize';
 
-import { Todo } from 'components/Todo';
+import { Todo } from 'components';
 
 import 'components/Main/styles.scss';
 
