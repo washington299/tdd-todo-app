@@ -31,7 +31,7 @@ describe('<Input />', () => {
 		expect(input.value).toBe('finish homework');
 	});
 
-	it('Should clear input if send icon is clicked and input has some value', async () => {
+	it('Should clear input if send icon is clicked and input has some value', () => {
 		render(<MockInputComponent />);
 
 		const input = screen.getByPlaceholderText(/Create a new todo/i);

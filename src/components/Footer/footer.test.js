@@ -17,6 +17,14 @@ const MockFooterComponent = ({ listItems = initialState }) => {
 };
 
 describe('<Footer />', () => {
+	const mockListItem = [
+		{
+			id: 1,
+			name: 'Wash the dishes',
+			completed: true,
+		},
+	];
+
 	const mockListItems = [
 		{
 			id: 1,
@@ -40,5 +48,11 @@ describe('<Footer />', () => {
 		render(<MockFooterComponent listItems={{ ...initialState, list: mockListItems }} />);
 
 		expect(screen.getByText(/2 items left/i)).toBeInTheDocument();
+	});
+
+	it('Should show Clear completed button when at least one item is completed', () => {
+		render(<MockFooterComponent listItems={{ ...initialState, list: mockListItem }} />);
+
+		expect(screen.getByRole('button', { name: /Clear completed/i })).toBeInTheDocument();
 	});
 });

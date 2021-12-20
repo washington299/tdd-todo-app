@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useState, useContext } from 'react';
 import { MdSend } from 'react-icons/md';
 
@@ -13,7 +14,9 @@ export const Input = () => {
 		dispatch,
 	} = useContext(ListContext);
 
-	const handleSubmit = () => {
+	const handleSubmit = e => {
+		e.preventDefault();
+
 		if (!inputValue) return;
 
 		dispatch({ payload: { name: 'ADD_ITEM', data: { item: inputValue } } });
@@ -23,15 +26,20 @@ export const Input = () => {
 	return (
 		<>
 			{filter === 'all' && (
-				<div className="form">
+				<form className="form" onSubmit={handleSubmit}>
 					<input
 						className="input form__input"
 						placeholder="Create a new todo"
 						value={inputValue}
 						onChange={e => setInputValue(e.target.value)}
 					/>
-					<MdSend className="form__send-icon" title="Form send icon" onClick={handleSubmit} />
-				</div>
+					<MdSend
+						className="form__send-icon"
+						type="submit"
+						title="Form send icon"
+						onClick={handleSubmit}
+					/>
+				</form>
 			)}
 		</>
 	);

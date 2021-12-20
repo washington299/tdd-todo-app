@@ -19,6 +19,7 @@ export const Footer = () => {
 		(filter === 'active' && listActiveItems) ||
 		(filter === 'completed' && listCompletedItems);
 
+	const completedItemExists = list.filter(item => item.completed === true);
 	const currentListLength = currentList.length;
 	const itemWord = currentListLength > 1 ? 'items' : 'item';
 
@@ -34,9 +35,13 @@ export const Footer = () => {
 		<footer className="footer">
 			<div className="footer__list-quantity">{`${currentListLength} ${itemWord} left`}</div>
 			{filter === 'all' && (
-				<button className="footer__clear-button" onClick={clearCompletedItems}>
-					Clear completed
-				</button>
+				<>
+					{completedItemExists.length > 0 && (
+						<button className="footer__clear-button" onClick={clearCompletedItems}>
+							Clear completed
+						</button>
+					)}
+				</>
 			)}
 		</footer>
 	);
