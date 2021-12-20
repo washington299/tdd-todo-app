@@ -45,12 +45,10 @@ describe('<Todo />', () => {
 		render(<MockTodoComponent />);
 
 		const todoInput = screen.getByPlaceholderText(/Create a new todo/i);
-		const clearCompletedButton = screen.getByRole('button', { name: /Clear completed/i });
 
 		fireEvent.click(screen.getByRole('button', { name: /Active/i }));
 
 		expect(todoInput).not.toBeInTheDocument();
-		expect(clearCompletedButton).not.toBeInTheDocument();
 	});
 
 	it('Should render correct active list items filter', () => {
@@ -88,9 +86,9 @@ describe('<Todo />', () => {
 		});
 		fireEvent.click(screen.getByTitle(/Form send icon/i));
 
-		const filterCompletedButton = screen.getAllByRole('button', { name: /Completed/i });
+		const filterCompletedButton = screen.getByRole('button', { name: /Completed/i });
 
-		fireEvent.click(filterCompletedButton[1]);
+		fireEvent.click(filterCompletedButton);
 
 		const emptyMessage = screen.getByText(/List is empty/i);
 		const itemsLeft = screen.getByText(/0 item left/i);
