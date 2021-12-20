@@ -30,9 +30,9 @@ export const List = () => {
 	const sortByHighId = (a, b) => b.id - a.id;
 
 	return (
-		<ul className="list">
+		<div className="list">
 			{currentList?.length > 0 ? (
-				<>
+				<ul>
 					{currentList.sort(sortByHighId).map(({ id, name, completed }, index) => (
 						<li key={id} className="list__item">
 							{completed ? (
@@ -70,10 +70,10 @@ export const List = () => {
 							/>
 						</li>
 					))}
-				</>
+				</ul>
 			) : (
 				<p className="list__empty-message">List is empty</p>
 			)}
-		</ul>
+		</div>
 	);
 };
