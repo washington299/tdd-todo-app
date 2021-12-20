@@ -6,9 +6,9 @@ import 'components/Content/styles.scss';
 
 export const Content = () => {
 	return (
-		<section className="content" data-testid="content">
+		<div className="content" data-testid="content">
 			<List />
 			<Footer />
-		</section>
+		</div>
 	);
 };
