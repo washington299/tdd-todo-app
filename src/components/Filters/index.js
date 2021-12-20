@@ -15,7 +15,7 @@ export const Filters = () => {
 	};
 
 	return (
-		<section className="filters">
+		<div className="filters">
 			<button
 				className={`filters__button ${filter === 'all' && 'active'}`}
 				onClick={() => markActiveButton('all')}
@@ -34,6 +34,6 @@ export const Filters = () => {
 			>
 				Completed
 			</button>
-		</section>
+		</div>
 	);
 };
